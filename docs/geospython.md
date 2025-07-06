@@ -1,4 +1,0 @@
-
-# geospython module
-
-::: geospython.geospython
