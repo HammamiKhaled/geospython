@@ -81,6 +81,7 @@ nav:
     - Report Issues: https://github.com/HammamiKhaled/geospython/issues
     - Examples:
         - examples/intro.ipynb
+        - examples/map.ipynb
     - API Reference:
           - geospython module: geospython.md
           - common module: common.md
