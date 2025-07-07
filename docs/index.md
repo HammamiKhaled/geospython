@@ -8,9 +8,16 @@
 
 
 -   Free software: MIT License
--   Documentation: <https://HammamiKhaled.github.io/geospython>
+-   Documentation: <https://khaledhammami.me/geospython>
 
 
 ## Features
 
--   TODO
+-   Interactive mapping
+-   Processing geospatial data
+
+## Usage
+
+```python
+import geospython
+```
