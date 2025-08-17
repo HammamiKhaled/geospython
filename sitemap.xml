@@ -2,42 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://HammamiKhaled.github.io/geospython/</loc>
-         <lastmod>2025-07-07</lastmod>
+         <lastmod>2025-08-17</lastmod>
     </url>
     <url>
          <loc>https://HammamiKhaled.github.io/geospython/changelog/</loc>
-         <lastmod>2025-07-07</lastmod>
+         <lastmod>2025-08-17</lastmod>
     </url>
     <url>
          <loc>https://HammamiKhaled.github.io/geospython/common/</loc>
-         <lastmod>2025-07-07</lastmod>
+         <lastmod>2025-08-17</lastmod>
     </url>
     <url>
          <loc>https://HammamiKhaled.github.io/geospython/contributing/</loc>
-         <lastmod>2025-07-07</lastmod>
+         <lastmod>2025-08-17</lastmod>
     </url>
     <url>
          <loc>https://HammamiKhaled.github.io/geospython/faq/</loc>
-         <lastmod>2025-07-07</lastmod>
+         <lastmod>2025-08-17</lastmod>
     </url>
     <url>
          <loc>https://HammamiKhaled.github.io/geospython/geospython/</loc>
-         <lastmod>2025-07-07</lastmod>
+         <lastmod>2025-08-17</lastmod>
     </url>
     <url>
          <loc>https://HammamiKhaled.github.io/geospython/installation/</loc>
-         <lastmod>2025-07-07</lastmod>
+         <lastmod>2025-08-17</lastmod>
     </url>
     <url>
          <loc>https://HammamiKhaled.github.io/geospython/usage/</loc>
-         <lastmod>2025-07-07</lastmod>
+         <lastmod>2025-08-17</lastmod>
+    </url>
+    <url>
+         <loc>https://HammamiKhaled.github.io/geospython/examples/foliumap/</loc>
+         <lastmod>2025-08-17</lastmod>
     </url>
     <url>
          <loc>https://HammamiKhaled.github.io/geospython/examples/intro/</loc>
-         <lastmod>2025-07-07</lastmod>
+         <lastmod>2025-08-17</lastmod>
     </url>
     <url>
          <loc>https://HammamiKhaled.github.io/geospython/examples/map/</loc>
-         <lastmod>2025-07-07</lastmod>
+         <lastmod>2025-08-17</lastmod>
     </url>
 </urlset>
