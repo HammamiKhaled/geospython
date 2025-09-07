@@ -82,6 +82,9 @@ nav:
     - Examples:
         - examples/intro.ipynb
         - examples/map.ipynb
+        - examples/foliumap.ipynb
+        - examples/geospython.ipynb
     - API Reference:
           - geospython module: geospython.md
           - common module: common.md
+          - foliumap module: foliumap.md
