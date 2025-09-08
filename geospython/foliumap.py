@@ -1,5 +1,10 @@
 import folium
 
+"""A class for creating interactive maps with Folium.
+This module provides a Map class that extends folium.Map and includes methods
+to add basemaps, GeoJSON data, vector data, and layer controls.
+"""
+
 
 class Map(folium.Map):
     def __init__(self, center=[20, 0], zoom=2, height="600px", **kwargs):
