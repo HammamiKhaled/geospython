@@ -1,9 +1,9 @@
-import folium
-
 """A class for creating interactive maps with Folium.
 This module provides a Map class that extends folium.Map and includes methods
 to add basemaps, GeoJSON data, vector data, and layer controls.
 """
+
+import folium
 
 
 class Map(folium.Map):
