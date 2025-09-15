@@ -1,5 +1,7 @@
 """Main module.
 This module provides a Map class for creating and manipulating interactive maps using ipyleaflet.
+It includes methods for adding various types of layers, such as basemaps, GeoJSON data, vector data,
+raster data, images, WMS layers, and videos.
 """
 
 import ipyleaflet
@@ -13,6 +15,7 @@ class Map(ipyleaflet.Map):
             center (list, optional): The initial center of the map. Defaults to [20, 0].
             zoom (int, optional): The initial zoom level of the map. Defaults to 2.
             height (str, optional): The height of the map. Defaults to "600px".
+            **kwargs: Additional keyword arguments for the ipyleaflet.Map class.
         """
         super().__init__(center=center, zoom=zoom, **kwargs)
         self.layout.height = height
@@ -55,6 +58,7 @@ class Map(ipyleaflet.Map):
             data (str, dict): The GeoJSON data to add.
             zoom_to_layer (bool, optional): Whether to zoom to the layer's bounds. Defaults to True.
             hover_style (dict, optional): The style to apply on hover. Defaults to None.
+            **kwargs: Additional keyword arguments for the ipyleaflet.GeoJSON layer.
         """
 
         import geopandas as gpd
@@ -80,6 +84,10 @@ class Map(ipyleaflet.Map):
 
     def add_vector(self, data, **kwargs):
         """Add vector data to the map.
+
+        Args:
+            data (str, GeoDataFrame, dict): The vector data to add. Can be a file path, GeoDataFrame, or GeoJSON dictionary.
+            **kwargs: Additional keyword arguments for the add_geojson method.
 
         Raises:
             ValueError: If the data is not a valid format.
@@ -109,3 +117,81 @@ class Map(ipyleaflet.Map):
         """Add a layer control to the map."""
         control = ipyleaflet.LayersControl(position="topright")
         self.add_control(control)
+
+    def add_raster(
+        self, filepath, name=None, colormap="viridis", opacity=1.0, **kwargs
+    ):
+        """Add a raster layer to the map.
+
+        Args:
+            filepath (str): The file path to the raster data.
+            name (str, optional): The name of the layer. Defaults to None.
+            colormap (str, optional): The colormap to use. Defaults to "viridis".
+            opacity (float, optional): The opacity of the layer. Defaults to 1.0
+            **kwargs: Additional keyword arguments for the tile layer.
+        """
+
+        from localtileserver import TileClient, get_leaflet_tile_layer
+
+        if name is None:
+            name = "Tile Layer"
+
+        client = TileClient(filepath)
+        tile_layer = get_leaflet_tile_layer(
+            client, name=name, colormap=colormap, opacity=opacity, **kwargs
+        )
+        self.add(tile_layer)
+        self.center = client.center()
+        self.zoom = client.default_zoom
+
+    def add_image(self, image, bounds=None, opacity=1.0, **kwargs):
+        """Adds an image to the map.
+
+        Args:
+            image (str): The file path to the image.
+            bounds (list, optional): The bounds for the image. Defaults to None.
+            opacity (float, optional): The opacity of the image. Defaults to 1.0.
+            **kwargs: Additional keyword arguments for the ipyleaflet.ImageOverlay layer.
+        """
+
+        if bounds is None:
+            bounds = [[-90, -180], [90, 180]]
+
+        overlay = ipyleaflet.ImageOverlay(
+            url=image, bounds=bounds, opacity=opacity, **kwargs
+        )
+        self.add(overlay)
+
+    def add_wms_layer(
+        self, url, layers, format="image/png", transparent=True, **kwargs
+    ):
+        """Adds a WMS layer to the map.
+
+        Args:
+            url (str): The WMS service URL.
+            layers (str): The layers to display.
+            format (str, optional): The image format. Defaults to "image/png".
+            transparent (bool, optional): Whether the layer is transparent. Defaults to True.
+            **kwargs: Additional keyword arguments for the ipyleaflet.WMSLayer layer.
+        """
+        layer = ipyleaflet.WMSLayer(
+            url=url, layers=layers, format=format, transparent=transparent, **kwargs
+        )
+        self.add(layer)
+
+    def add_video(self, video, bounds=None, opacity=1.0, **kwargs):
+        """Adds a video to the map.
+
+        Args:
+            video (str): The file path to the video.
+            bounds (list, optional): The bounds for the video. Defaults to None.
+            opacity (float, optional): The opacity of the video. Defaults to 1.0.
+            **kwargs: Additional keyword arguments for the ipyleaflet.VideoOverlay layer.
+        """
+
+        if bounds is None:
+            bounds = [[-90, -180], [90, 180]]
+        overlay = ipyleaflet.VideoOverlay(
+            url=video, bounds=bounds, opacity=opacity, **kwargs
+        )
+        self.add(overlay)
