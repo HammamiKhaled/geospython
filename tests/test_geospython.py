@@ -2,7 +2,6 @@
 
 """Tests for `geospython` package."""
 
-
 import unittest
 
 from geospython import geospython
